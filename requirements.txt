@@ -7,3 +7,4 @@ svgpathtools
 tensorflow-gpu>=1.6.0
 tqdm
 transforms3d
+DO NOT FORGET YOUR BRAIN
