@@ -370,13 +370,13 @@ def main():
 
 
 
-        print('{}-dataset_test           : {}'.format(datetime.now(), dataset_test))
+        # print('{}-dataset_test           : {}'.format(datetime.now(), dataset_test))
         print('{}-batch_num_test         : {}'.format(datetime.now(), batch_num_test))
         #
         data_test_placeholder = tf.placeholder(data_test.dtype, data_test.shape, name='data_test')
         label_test_placeholder = tf.placeholder(tf.int64, label_test.shape, name='label_test')
-        print('{}-data_test_placeholder : {}'.format(datetime.now(), data_test_placeholder))
-        print('{}-label_test_placeholder: {}'.format(datetime.now(), label_test_placeholder))
+        # print('{}-data_test_placeholder : {}'.format(datetime.now(), data_test_placeholder))
+        # print('{}-label_test_placeholder: {}'.format(datetime.now(), label_test_placeholder))
 
         dataset_test = tf.data.Dataset.from_tensor_slices((data_test_placeholder, label_test_placeholder))
         print('{}-dataset_test           : {}'.format(datetime.now(), dataset_test))
@@ -390,16 +390,16 @@ def main():
             dataset_test = dataset_test.apply(tf.contrib.data.batch_and_drop_remainder(batch_size))
             batch_num_test = math.floor(num_test / batch_size)
         iterator_test = dataset_test.make_initializable_iterator()
-        print('{}-iterator_test          : {}'.format(datetime.now(), iterator_test))
-        print('{}-{:d} testing batches per test.'.format(datetime.now(), batch_num_test))
+        # print('{}-iterator_test          : {}'.format(datetime.now(), iterator_test))
+        # print('{}-{:d} testing batches per test.'.format(datetime.now(), batch_num_test))
 
-        print('{}-run: sess.run(iterator_test.initializer, ...)'.format(datetime.now()))
+        # print('{}-run: sess.run(iterator_test.initializer, ...)'.format(datetime.now()))
         sess.run(iterator_test.initializer, feed_dict={
             data_test_placeholder: data_test,
             label_test_placeholder: label_test,
         })
 
-        print('{}-run: sess.run(reset_metrics_op)'.format(datetime.now()))
+        # print('{}-run: sess.run(reset_metrics_op)'.format(datetime.now()))
         sess.run(reset_metrics_op)
 
         for batch_idx_test in range(batch_num_test):
@@ -409,7 +409,7 @@ def main():
                 batch_size_test = batch_size
             else:
                 batch_size_test = num_test % batch_size
-            print('{}-batch_size_test    : {}'.format(datetime.now(), batch_size_test))
+            # print('{}-batch_size_test    : {}'.format(datetime.now(), batch_size_test))
             xforms_np, rotations_np = pf.get_xforms(batch_size_test,
                                                     rotation_range=setting.rotation_range_test,
                                                     scaling_range=setting.scaling_range_test,
