@@ -20,6 +20,9 @@ from datetime import datetime
 
 
 def main():
+
+    script_runtime_start = datetime.now()
+
     parser = argparse.ArgumentParser()
     parser.add_argument('--path', '-t', help='Path to data', required=True)
     parser.add_argument('--path_val', '-v', help='Path to validation data')
@@ -434,6 +437,12 @@ def main():
         sys.stdout.flush()
 
         print('{}-Test done!'.format(datetime.now()))
+
+        script_runtime_end = datetime.now()
+        script_runtime = script_runtime_end - script_runtime_start
+        print('{}-Script start:   {}'.format(datetime.now(), script_runtime_start))
+        print('{}-Script end:     {}'.format(datetime.now(), script_runtime_end))
+        print('{}-Script runtime: {}'.format(datetime.now(), script_runtime))
 
 
 
